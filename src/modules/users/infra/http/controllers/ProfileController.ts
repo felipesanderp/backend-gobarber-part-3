@@ -14,6 +14,8 @@ export default class ProfileController {
       user_id,
     });
 
+    delete user.password;
+
     return response.json(user);
   }
 
@@ -30,6 +32,8 @@ export default class ProfileController {
       old_password,
       password,
     });
+
+    delete user.password;
 
     return response.json(user);
   }
