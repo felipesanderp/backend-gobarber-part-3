@@ -33,7 +33,7 @@ class AppointmentsRepository implements IAppointmentsREpository {
         provider_id,
         date: Raw(
           dateFieldName =>
-            `to_char(${dateFieldName} 'MM-YYYY' = '${parsedMonth}-${year}' )`
+            `to_char(${dateFieldName}, 'MM-YYYY') = '${parsedMonth}-${year}'`
         ),
       },
     });
@@ -55,7 +55,7 @@ class AppointmentsRepository implements IAppointmentsREpository {
         provider_id,
         date: Raw(
           dateFieldName =>
-            `to_char(${dateFieldName} 'DD-MM-YYYY' = '${parseDay}-${parsedMonth}-${year}' )`
+            `to_char(${dateFieldName}, 'DD-MM-YYYY') = '${parseDay}-${parsedMonth}-${year}'`
         ),
       },
     });
@@ -65,13 +65,13 @@ class AppointmentsRepository implements IAppointmentsREpository {
 
   public async create({
     provider_id,
-    date,
     user_id,
+    date,
   }: ICreatAppointmentDTO): Promise<Appointment> {
     const appointment = this.ormRepository.create({
       provider_id,
-      date,
       user_id,
+      date,
     });
 
     await this.ormRepository.save(appointment);
