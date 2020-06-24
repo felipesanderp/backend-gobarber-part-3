@@ -3,7 +3,7 @@ import { container } from 'tsyringe';
 import { classToClass } from 'class-transformer';
 
 import UpdateProfileService from '@modules/users/services/UpdateProfileService';
-import ShowProfileService from '@modules/users/services/ShowProfileSevice';
+import ShowProfileService from '@modules/users/services/ShowProfileService';
 
 export default class ProfileController {
   public async show(request: Request, response: Response): Promise<Response> {
